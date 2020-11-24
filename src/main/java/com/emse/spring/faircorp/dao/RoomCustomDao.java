@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RoomCustomDao {
     List<Room> findByWindowOpen();
+    List<Room> findByName(String name);
 }

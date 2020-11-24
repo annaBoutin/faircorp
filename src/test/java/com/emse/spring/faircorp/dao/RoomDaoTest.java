@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class RoomDaoTest {
@@ -19,6 +21,15 @@ public class RoomDaoTest {
         Room room = roomDao.getOne(-10L);
         Assertions.assertThat(room.getName()).isEqualTo("Room1");
         Assertions.assertThat(room.getCurrentTemp()).isEqualTo(22.3);
+    }
+
+    @Test
+    public void shouldFindARoomByName() {
+        List<Room> result = roomDao.findByName("Room1");
+        Assertions.assertThat(result)
+                .hasSize(1)
+                .extracting("id")
+                .containsExactly(-10L);
     }
 
 }
