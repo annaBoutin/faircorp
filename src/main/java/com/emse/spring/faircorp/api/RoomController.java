@@ -2,7 +2,6 @@ package com.emse.spring.faircorp.api;
 
 import com.emse.spring.faircorp.dao.BuildingDao;
 import com.emse.spring.faircorp.dao.RoomDao;
-import com.emse.spring.faircorp.model.Building;
 import com.emse.spring.faircorp.model.Room;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +35,7 @@ public class RoomController {
     @PostMapping
     public RoomDto create(@RequestBody RoomDto dto) {
         // WindowDto must always contain the window room
-        Building building = buildingDao.getOne(dto.getBuildingId());
+        //Building building = buildingDao.getOne(dto.getBuildingId());
         Room room = null;
         // On creation id is not defined
         if (dto.getId() == null) {

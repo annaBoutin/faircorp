@@ -21,7 +21,7 @@ public class RoomDto {
         this.name = room.getName();
         this.currentTemp = room.getCurrentTemp();
         this.targetTemp = room.getTargetTemp();
-        this.buildingId = room.getBuilding().getId();
+        //this.buildingId = room.getBuilding().getId();
     }
 
     public Long getId() {
@@ -64,11 +64,11 @@ public class RoomDto {
         this.targetTemp = targetTemp;
     }
 
-    public Long getBuildingId() {
-        return buildingId;
-    }
+    //public Long getBuildingId() {
+    //    return buildingId;
+    //}
 
-    public void setBuildingId(Long buildingId) {
-        this.buildingId = buildingId;
-    }
+    //public void setBuildingId(Long buildingId) {
+    //    this.buildingId = buildingId;
+    //}
 }
