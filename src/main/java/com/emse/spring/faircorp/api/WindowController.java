@@ -63,4 +63,8 @@ public class WindowController {
         windowDao.deleteById(id);
     }
 
+    @GetMapping(path = "/room/{id}")
+    public List<WindowDto> findByRoomId(@PathVariable Long id){
+        return windowDao.findByRoomId(id).stream().map(WindowDto::new).collect(Collectors.toList());
+    }
 }
