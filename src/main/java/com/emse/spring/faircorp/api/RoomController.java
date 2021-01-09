@@ -1,7 +1,9 @@
 package com.emse.spring.faircorp.api;
 
 import com.emse.spring.faircorp.dao.BuildingDao;
+import com.emse.spring.faircorp.dao.HeaterDao;
 import com.emse.spring.faircorp.dao.RoomDao;
+import com.emse.spring.faircorp.dao.WindowDao;
 import com.emse.spring.faircorp.model.Room;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +18,14 @@ import java.util.stream.Collectors;
 public class RoomController {
     private RoomDao roomDao;
     private BuildingDao buildingDao;
+    private WindowDao windowDao;
+    private HeaterDao heaterDao;
 
-    public RoomController(RoomDao roomDao, BuildingDao buildingDao){
+    public RoomController(RoomDao roomDao, BuildingDao buildingDao, WindowDao windowDao, HeaterDao heaterDao){
         this.buildingDao = buildingDao;
         this.roomDao = roomDao;
+        this.windowDao = windowDao;
+        this.heaterDao = heaterDao;
     }
 
     @GetMapping
@@ -49,6 +55,14 @@ public class RoomController {
         }
         return new RoomDto(room);
     }
+
+    @DeleteMapping(path = "/{id}")
+    public void delete(@PathVariable Long id){
+        windowDao.deleteByRoomId(id);
+        heaterDao.deleteByRoomId(id);
+        roomDao.deleteById(id);
+    }
+
 
 
 
