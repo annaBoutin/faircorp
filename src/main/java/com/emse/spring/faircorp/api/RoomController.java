@@ -46,6 +46,8 @@ public class RoomController {
         // On creation id is not defined
         if (dto.getId() == null) {
             room = roomDao.save(new Room(dto.getFloor(), dto.getName()));
+            room.setCurrentTemp(dto.getCurrentTemp());
+            room.setTargetTemp(dto.getTargetTemp());
         }
         else {
             room = roomDao.getOne(dto.getId());  // (9)
